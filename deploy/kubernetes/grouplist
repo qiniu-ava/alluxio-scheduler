@@ -1,0 +1,11 @@
+[
+  {"name": "alg-pro", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "blademaster", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "general-reg", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "group-ava", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "ocr", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "terror", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "video", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "video-det", "imagetag": "3b5b20a-080ef7c"},
+  {"name": "default", "imagetag": "3b5b20a-080ef7c"}
+]

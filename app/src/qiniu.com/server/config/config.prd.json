@@ -1,0 +1,8 @@
+{
+  "kube": {
+    "config_path": "/conf/kube/config-jq-ava"
+  },
+  "namespace": "ava-prd",
+  "nodelist": "/conf/env/nodelist",
+  "grouplist": "/conf/env/grouplist"
+}

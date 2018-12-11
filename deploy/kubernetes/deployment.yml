@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alluxio-schedular
+  labels:
+    app: alluxio-schedular
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alluxio-schedular
+  template:
+    metadata:
+      labels:
+        app: alluxio-schedular
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-owner.qiniu.com/atlab
+                operator: In
+                values:
+                - "true"
+      tolerations:
+      - effect: NoSchedule
+        key: qiniu.com/owner
+        operator: Equal
+        value: atlab
+      - effect: NoSchedule
+        key: nvidia.com/gpu
+        value: "true"
+      imagePullSecrets:
+        - name: atlab-images
+      containers:
+      - name: app
+        image: reg-xs.qiniu.io/atlab/alluxio-schedular:<tag>
+        resources:
+          requests:
+            cpu: 1
+            memory: 100Mi 
+          limits:
+            cpu: 3
+            memory: 500Mi
+        volumeMounts:
+        - mountPath: /conf/env
+          name: config-list
+        - mountPath: /conf/kube
+          name: kube-config
+      volumes:
+      - name: config-list
+        configMap:
+          defaultMode: 420
+          name: alluxio-schedular-config
+      - name: kube-config
+        secret:
+          defaultMode: 420
+          secretName: alluxio-schedular-kube-config

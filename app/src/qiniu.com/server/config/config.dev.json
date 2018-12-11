@@ -1,0 +1,8 @@
+{
+  "kube": {
+    "config_path": "/Users/bowenxie/.kube/config-jq-ava"
+  },
+  "namespace": "ava-staging",
+  "nodelist": "/Users/bowenxie/nodelist",
+  "grouplist": "/Users/bowenxie/grouplist"
+}
