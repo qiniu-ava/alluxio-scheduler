@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alluxio-worker-<group_name>-configmap
+  namespace: ava
+data:
+  ALLUXIO_CLASSPATH: "/opt/alluxio/lib/gson-2.2.4.jar:/opt/alluxio/lib/qiniu-java-sdk-7.2.11.jar:/opt/alluxio/lib/okhttp-3.10.0.jar:/opt/alluxio/lib/okio-1.14.0.jar:/opt/alluxio/lib/jackson-annotations-2.9.5.jar:/opt/alluxio/lib/jackson-core-2.9.5.jar:/opt/alluxio/lib/jackson-databind-2.9.5.jar"
+  ALLUXIO_JAVA_OPTS: "-Xms8g -Xmx8g"
+  KODO_IO_ORIGHOST: "nbjjh-gate-io.qiniu.com"
+  KODO_UP_ORIGHOST: "nbjjh-gate-up.qiniu.com"
+  ALLUXIO_WORKER_BLOCK_MASTER_CLIENT_POOL_SIZE: "256"
+  ALLUXIO_WORKER_PORT: "<ALLUXIO_WORKER_PORT>"
+  ALLUXIO_WORKER_DATA_PORT: "<ALLUXIO_WORKER_DATA_PORT>"
+  ALLUXIO_WORKER_WEB_PORT: "<ALLUXIO_WORKER_WEB_PORT>"
+  ALLUXIO_WORKER_ROLE: "READ"
+  ALLUXIO_WORKER_TIEREDSTORE_LEVELS: "1"
+  ALLUXIO_WORKER_TIEREDSTORE_LEVEL0_ALIAS: "SSD"
+  ALLUXIO_WORKER_TIEREDSTORE_LEVEL0_DIRS_PATH: "/disk-rbd/alluxio/workers/worker-<group_name>/cachedisk"
+  ALLUXIO_WORKER_TIEREDSTORE_LEVEL0_DIRS_QUOTA: "2T"
+  ALLUXIO_WORKER_TIEREDSTORE_LEVEL0_WATERMARK_HIGH_RATIO: "0.75"
+  ALLUXIO_WORKER_TIEREDSTORE_LEVEL0_WATERMARK_LOW_RATIO: "0.5"
+  ALLUXIO_WORKER_TIEREDSTORE_RESERVER_ENABLED: "true"
+  ALLUXIO_WORKER_TIEREDSTORE_RESERVER_INTERVAL: "10000"
+  ALLUXIO_ZOOKEEPER_ELECTION_PATH: "/election/<group_name>"
+  ALLUXIO_ZOOKEEPER_LEADER_PATH: "/leader/<group_name>"
+  ALLUXIO_ZOOKEEPER_ENABLED: "true"
+  ALLUXIO_ZOOKEEPER_ADDRESS: "192.168.213.42:2181,192.168.213.45:2181,192.168.213.46:2181"
